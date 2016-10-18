@@ -1,0 +1,12 @@
+{
+  "generator-openapi-repo": {
+    "importExistingSpec": true,
+    "importedSpec": "../cenit/public/openapi/v1/swagger.yaml",
+    "name": "Cenit IO",
+    "redocVersion": "v1",
+    "repo": "cenit-io/openapi",
+    "splitSpec": false,
+    "samples": true,
+    "installSwaggerUI": true
+  }
+}
