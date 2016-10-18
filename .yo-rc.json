@@ -3,10 +3,20 @@
     "importExistingSpec": true,
     "importedSpec": "../cenit/public/openapi/v1/swagger.yaml",
     "name": "Cenit IO",
-    "redocVersion": "v1",
     "repo": "cenit-io/openapi",
     "splitSpec": false,
     "samples": false,
-    "installSwaggerUI": true
+    "installSwaggerUI": true,
+    "description": "",
+    "version": "1",
+    "email": "support@cenit.io",
+    "username": "Cenit IO Support",
+    "redocVersion": "latest",
+    "travis": true,
+  #  "packageName": "cenit-io-openapi-spec",
+    "specVersion": "0.0.1",
+    "samples": true,
+  #  "branchPreview": true
+
   }
 }
