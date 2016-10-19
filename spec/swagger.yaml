@@ -244,7 +244,7 @@ definitions:
 paths:
   '/setup/connection/{id}':
     get:
-      summary: Retrieves the details of an existing connection
+      summary: Retrieve an existing connection
       description: Retrieves the details of an existing connection. You need only supply the unique connection identifier that was returned upon connection creation.
       parameters:
         - description: Connection ID
@@ -260,7 +260,7 @@ paths:
         '404':
           description: Item not found
     delete:
-      summary: Permanently deletes a connection
+      summary: Delete a connection
       description: Permanently deletes a connection. It cannot be undone.
       parameters:
         - description: Connection ID
@@ -275,6 +275,7 @@ paths:
            description: Item not found
   '/setup/connection':
     get:
+      summary: Returns a list of connections
       description: Returns a list of connections you've previously created. The connections are returned in sorted order, with the most recent connection appearing first.
       responses:
         '200':
@@ -284,6 +285,7 @@ paths:
             items:
               $ref: '#/definitions/connection'
     post:
+      summary: Create or update a connection
       description: Creates or updates the specified connection by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
       responses:
         '200':
@@ -292,6 +294,7 @@ paths:
             $ref: '#/definitions/connection'
   '/setup/connection_role/{id}':
     get:
+      summary: Return a connection role
       description: Returns a connection role
       parameters:
         - description: Connection role ID
@@ -307,6 +310,7 @@ paths:
         '404':
           description: Item not found
     delete:
+      summary: Delete a connection role.
       description: Deletes the specified connection role.
       parameters:
         - description: Connection role ID
@@ -321,6 +325,7 @@ paths:
           description: Item not found
   '/setup/connection_role':
       get:
+        summary: Returns a list of connection roles
         description: Returns a list of connection roles you've previously created. The connection roles are returned in sorted order, with the most recent connection role appearing first.
         responses:
           '200':
@@ -330,6 +335,7 @@ paths:
               items:
                 $ref: '#/definitions/connection_role'
       post:
+        summary: Create or update a connection role
         description: Creates or updates the specified connection role by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
         responses:
           '200':
@@ -338,6 +344,7 @@ paths:
               $ref: '#/definitions/connection_role'
   '/setup/data_type/':
     get:
+      summary: Returns a list of DataTypes
       description: Returns a list of DataTypes you've previously created. The DataTypes are returned in sorted order, with the most recent DataType appearing first.
       responses:
         '200':
@@ -347,6 +354,7 @@ paths:
             items:
               $ref: '#/definitions/data_type'
     post:
+      summary: Create or update a DataType
       description: Creates or updates the specified DataType by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
       responses:
         '200':
@@ -355,7 +363,8 @@ paths:
             $ref: '#/definitions/data_type'
   '/setup/data_type/{id}':
     get:
-      description: Retrieves the details of an existing DataType. You need only supply the unique DataType identifier that was returned upon DataType creation.
+      summary: Retrieve a data type
+      description: Retrieves the details of an existing data type. You need only supply the unique data  type identifier that was returned upon DataType creation.
       parameters:
         - description: DataType ID
           in: path
@@ -370,6 +379,7 @@ paths:
         '404':
           description: Item not found.
     delete:
+      summary: Delete a data type
       description: Deletes the specified data type.
       parameters:
         - description: DataType ID
@@ -384,6 +394,7 @@ paths:
           description: Item not found
   '/setup/observer/':
       get:
+        summary: Returns a list of events
         description: Returns a list of events you've previously created. The events are returned in sorted order, with the most recent event appearing first.
         responses:
           '200':
@@ -393,6 +404,7 @@ paths:
               items:
                 $ref: '#/definitions/observer'
       post:
+        summary: Create or update an event
         description: Creates or updates the specified event observer. Any parameters not provided will be left unchanged.
         responses:
           '200':
@@ -401,6 +413,7 @@ paths:
               $ref: '#/definitions/observer'
   '/setup/observer/{id}':
       get:
+        summary:  Retrieve an existing event
         description: Retrieves the details of an existing event. You need only supply the unique event identifier that was returned upon event creation.
         parameters:
           - description: Observer ID
@@ -416,6 +429,7 @@ paths:
           '404':
             description: Item not found.
       delete:
+        summary:  Delete an event
         description: Deletes the specified event observer.
         parameters:
           - description: Observer ID
@@ -430,6 +444,7 @@ paths:
             description: Item not found
   '/setup/scheduler/':
     get:
+      summary: Returns a list of schedulers
       description: Returns a list of schedulers you've previously created. The schedulers are returned in sorted order, with the most recent scheduler appearing first.
       responses:
         '200':
@@ -439,6 +454,7 @@ paths:
             items:
               $ref: '#/definitions/scheduler'
     post:
+      summary: Create or update an scheduler
       description: Creates or updates the specified scheduler. Any parameters not provided will be left unchanged.
       responses:
         '200':
@@ -447,6 +463,7 @@ paths:
             $ref: '#/definitions/scheduler'
   '/setup/scheduler/{id}':
         get:
+          summary: Retrieve an existing schedule
           description: Retrieves the details of an existing scheduler. You need only supply the unique scheduler identifier that was returned upon scheduler creation.
           parameters:
             - description: Scheduler ID
@@ -462,6 +479,7 @@ paths:
             '404':
               description: Item not found.
         delete:
+          summary: Delete an schedule
           description: Deletes the specified scheduler.
           parameters:
             - description: Scheduler ID
@@ -476,6 +494,7 @@ paths:
               description: Item not found
   '/setup/flow/':
           get:
+            summary: Returns a list of flows
             description: Returns a list of flows you've previously created. The flows are returned in sorted order, with the most recent flow appearing first.
             responses:
               '200':
@@ -485,6 +504,7 @@ paths:
                   items:
                     $ref: '#/definitions/flow'
           post:
+            summary: Create or update a flow
             description: Creates or updates the specified flow. Any parameters not provided will be left unchanged.
             responses:
               '200':
@@ -493,6 +513,7 @@ paths:
                   $ref: '#/definitions/flow'
   '/setup/flow/{id}':
           get:
+            summary: Retrieve an existing flow
             description: Retrieves the details of an existing flow. You need only supply the unique flow identifier that was returned upon flow creation.
             parameters:
               - description: Flow ID
@@ -508,6 +529,7 @@ paths:
               '404':
                 description: Item not found.
           delete:
+            summary: Delete a flow.
             description: Deletes the specified flow.
             parameters:
               - description: Flow ID
@@ -522,6 +544,7 @@ paths:
                 description: Item not found
   '/setup/schema/':
      get:
+       summary: Returns a list of schemas
        description: Returns a list of schemas you've previously created. The schemas are returned in sorted order, with the most recent schema appearing first.
        responses:
           '200':
@@ -531,6 +554,7 @@ paths:
                items:
                  $ref: '#/definitions/schema'
      post:
+       summary: Create or update an schema
        description: Creates or updates the specified schema. Any parameters not provided will be left unchanged.
        responses:
           '200':
@@ -539,6 +563,7 @@ paths:
               $ref: '#/definitions/schema'
   '/setup/schema/{id}':
       get:
+        summary: Retrieve an existing schema
         description: Retrieves the details of an existing schema. You need only supply the unique schema identifier that was returned upon schema creation.
         parameters:
           - description: Schema ID
@@ -554,6 +579,7 @@ paths:
           '404':
               description: Item not found.
       delete:
+        summary: Delete an schema.
         description: Deletes the specified schema.
         parameters:
           - description: Schema ID
@@ -568,6 +594,7 @@ paths:
               description: Item not found
   '/setup/translator/':
        get:
+         summary: Returns a list of translators
          description: Returns a list of translators you've previously created. The translators are returned in sorted order, with the most recent translator appearing first.
          responses:
             '200':
@@ -577,6 +604,7 @@ paths:
                  items:
                    $ref: '#/definitions/translator'
        post:
+         summary: Create or update a translator
          description: Creates or updates the specified translator. Any parameters not provided will be left unchanged.
          responses:
             '200':
@@ -585,6 +613,7 @@ paths:
                 $ref: '#/definitions/translator'
   '/setup/translator/{id}':
         get:
+          summary: Retrieve an existing translator
           description: Retrieves the details of an existing translator. You need only supply the unique translator identifier that was returned upon translator creation.
           parameters:
             - description: Translator ID.
@@ -600,6 +629,7 @@ paths:
             '404':
                 description: Item not found.
         delete:
+          summary: Delete a translator
           description: Deletes the specified translator.
           parameters:
             - description: Translator ID.
@@ -614,6 +644,7 @@ paths:
               description: Item not found
   '/setup/webhook/':
     get:
+      summary: Returns a list of webhooks
       description: Returns a list of webhooks you've previously created. The webhooks are returned in sorted order, with the most recent webhook appearing first.
       responses:
         '200':
@@ -623,6 +654,7 @@ paths:
             items:
               $ref: '#/definitions/webhook'
     post:
+      summary: Create or update a webhook
       description: Creates or updates the specified webhook. Any parameters not provided will be left unchanged.
       responses:
          '200':
@@ -631,6 +663,7 @@ paths:
              $ref: '#/definitions/webhook'
   '/setup/webhook/{id}':
     get:
+      summary: Retrieve an existing webhook
       description: Retrieves the details of an existing webhook. You need only supply the unique webhook identifier that was returned upon webhook creation.
       parameters:
         - description: Webhook ID.
@@ -646,6 +679,7 @@ paths:
         '404':
           description: Item not found.
     delete:
+      summary: Delete a webhook
       description: Deletes the specified webhook.
       parameters:
         - description: Webhook ID.
@@ -660,6 +694,7 @@ paths:
           description: Item not found
   '/setup/namespace/':
     get:
+      summary: Returns a list of namespaces
       description: Returns a list of namespaces you've previously created. The namespaces are returned in sorted order, with the most recent namespace appearing first.
       responses:
         '200':
@@ -669,6 +704,7 @@ paths:
             items:
               $ref: '#/definitions/namespace'
     post:
+      summary: Create or update a namespace
       description: Creates or updates the specified namespace. Any parameters not provided will be left unchanged.
       responses:
         '200':
@@ -677,6 +713,7 @@ paths:
             $ref: '#/definitions/namespace'
   '/setup/namespace/{id}':
     get:
+      summary: Retrieve an existing namespace
       description: Retrieves the details of an existing namespace. You need only supply the unique webhook namespace that was returned upon namespace creation.
       parameters:
         - description: Namespace ID.
@@ -692,6 +729,7 @@ paths:
          '404':
            description: Item not found.
     delete:
+      summary: Delete a namespace
       description: Deletes the specified namespace.
       parameters:
         - description: Namespace ID.
