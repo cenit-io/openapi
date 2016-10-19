@@ -5,9 +5,9 @@ host: cenit.io
 basePath: /api/v1
 info:
   description: |
-    Open platform for data and business integration.
+    Open Platform for Data and Business Integration
   version: v1
-  title: Cenit.io
+  title: Cenit IO
   contact:
     email: support@cenit.io
   termsOfService: 'https://cenit-portal.herokuapp.com/terms_of_service'
@@ -344,8 +344,8 @@ paths:
               $ref: '#/definitions/connection_role'
   '/setup/data_type/':
     get:
-      summary: Returns a list of DataTypes
-      description: Returns a list of DataTypes you've previously created. The DataTypes are returned in sorted order, with the most recent DataType appearing first.
+      summary: Returns a list of data types
+      description: Returns a list of data types you've previously created. The data types are returned in sorted order, with the most recent DataType appearing first.
       responses:
         '200':
           description: OK
@@ -354,8 +354,8 @@ paths:
             items:
               $ref: '#/definitions/data_type'
     post:
-      summary: Create or update a DataType
-      description: Creates or updates the specified DataType by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+      summary: Create or update a data type
+      description: Creates or updates the specified data type by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
       responses:
         '200':
           description: OK
@@ -366,7 +366,7 @@ paths:
       summary: Retrieve a data type
       description: Retrieves the details of an existing data type. You need only supply the unique data  type identifier that was returned upon DataType creation.
       parameters:
-        - description: DataType ID
+        - description: data type ID
           in: path
           name: id
           type: string
@@ -382,7 +382,7 @@ paths:
       summary: Delete a data type
       description: Deletes the specified data type.
       parameters:
-        - description: DataType ID
+        - description: data type ID
           in: path
           name: id
           type: string
