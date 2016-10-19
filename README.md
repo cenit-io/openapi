@@ -1,6 +1,10 @@
 # Cenit IO OpenAPI Specification
 [![Build Status](https://travis-ci.org/cenit-io/openapi.svg?branch=master)](https://travis-ci.org/cenit-io/openapi)
 
+Cenit IO (https://cenit.io) is an Open Platform for Data and Business Integration (iPaaS) to process, storage and move data in connection with Cloud or On-Premise services. It has been designed to orchestrate data flows that may involve several kind of endpoints (APIs, Datasets, EDI). It makes possible the automation of all operational processes in a company, connecting between organization's on-premises infrastructure and cloud provider services.
+
+It allows the creation of custom data pipelines for process, storage and data movement between APIs –either cloud or on premises-. The flows could be trigger by data events or be scheduled.
+
 ## Links
 
 - Documentation(ReDoc): https://cenit-io.github.io/openapi/
