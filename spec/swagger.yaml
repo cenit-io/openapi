@@ -5,21 +5,23 @@ host: cenit.io
 basePath: /api/v1
 info:
   description: |
-    Open Platform for Data and Business Integration
+    Cenit IO REST API - Open Platform for Data and Business Integration (iPaaS)
   version: v1
-  title: Cenit IO
+  title: "Cenit IO REST API"
   contact:
+    name: "Cenit IO Support"
     email: support@cenit.io
+    url: "https://cenit.io"
   termsOfService: 'https://cenit-portal.herokuapp.com/terms_of_service'
   x-logo:
     url: https://cenit.io/images/logo.png
   x-providerName: cenit.io
   x-origin:
       format: swagger
-      url: 'https://cenit.io/api/v1/swagger.json'
+      url: 'https://cenit-io.github.io/openapi/swagger.json'
       version: '2.0'
 externalDocs:
-  url: 'http://cenit-io.github.io/docs/'
+  url: 'https://github.com/cenit-io/openapi'
 consumes:
   - application/json
   - application/xml
