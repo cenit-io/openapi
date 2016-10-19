@@ -656,8 +656,8 @@ paths:
                 description: Item not found
   '/setup/schema/':
      get:
-      tags:
-        - Schema    
+       tags:
+         - Schema    
        summary: Returns a list of schemas
        description: Returns a list of schemas you've previously created. The schemas are returned in sorted order, with the most recent schema appearing first.
        responses:
@@ -668,8 +668,8 @@ paths:
                items:
                  $ref: '#/definitions/schema'
      post:
-      tags:
-        - Schema     
+       tags:
+         - Schema     
        summary: Create or update an schema
        description: Creates or updates the specified schema. Any parameters not provided will be left unchanged.
        responses:
