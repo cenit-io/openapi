@@ -244,6 +244,7 @@ definitions:
 paths:
   '/setup/connection/{id}':
     get:
+      summary: Retrieves the details of an existing connection
       description: Retrieves the details of an existing connection. You need only supply the unique connection identifier that was returned upon connection creation.
       parameters:
         - description: Connection ID
@@ -259,6 +260,7 @@ paths:
         '404':
           description: Item not found
     delete:
+      summary: Permanently deletes a connection
       description: Permanently deletes a connection. It cannot be undone.
       parameters:
         - description: Connection ID
