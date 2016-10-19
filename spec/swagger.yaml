@@ -25,6 +25,68 @@ consumes:
   - application/xml
 produces:
   - application/json
+################################################################################
+tags:
+  - name: Introduction
+    description: |
+      The Cenit IO API is organized around REST. Cenit IO is an Open Platform for Data 
+      and Business Integration (iPaaS) to process, storage and move data in connection 
+      with Cloud or On-Premise services. 
+      
+      It has been designed to orchestrate data flows that may involve several kind of 
+      endpoints (APIs, Datasets, EDI). It makes possible the automation of all operational 
+      processes in a company, connecting between organization's on-premises infrastructure 
+      and cloud provider services.
+   - name: Authentication
+    description: |
+      When you sign up for an account, you are given your first API key.
+      You can generate additional API keys, and delete API keys (as you may
+      need to rotate your keys in the future). You authenticate to Cenit IO API 
+      by providing your endpoint API keys and token in the header parameters into 
+      request. You can have multiple API keys and token active at one time for 
+      any endpoint.
+    - name: Connection
+    description: | 
+      Connection are the representation of endpoint. 
+    - name: Connection Role
+    description: | 
+      Define a group of webhooks that can apply to several connections.       
+    - name: Data Event
+    description: | 
+      Allow that objects flow through the hub. The creation of new objects 
+      and/or changes in existing objects will result in events. These events 
+      ultimately result in calls being made to various Flows in your endpoints.
+    - name: Scheduler
+    description: | 
+      Schedulers are events triggered on a certain moment and can be optionally recurrent.
+    - name: Webhook
+    description: |       
+      Define an HTTP Method and params.
+    - name: Translator
+    description: |       
+      A translator defines a logic for data manipulation.
+        - Data manipulation can occurs in the following scenarios:
+        - Importing outside data into Cenit
+        - Updating data already stored in Cenit
+        - Converting data already stored in Cenit
+        - Exporting data outside Cenit
+    - name: Flow
+    description: |       
+      A flow defines how data is processed by the execution of one or more actions, 
+      if the data is coming in to Cenit or going out of Cenit.   
+      Data processing involve: 
+        ₋ An execution trigger to start the data processing. 
+        ₋ Data types. 
+        ₋ Translators. 
+        ₋ Connections & Webhooks
+    - name: Schema
+    description: |       
+      Define a data type is as simple as a JSON Schema http://json-schema.org
+    - name: Namespace
+    description: |       
+      Define space of names to use across all the tenants    
+       
+################################################################################
 securityDefinitions:
   X-User-Access-Key:
       type: apiKey
@@ -37,6 +99,7 @@ securityDefinitions:
 security:
   - X-User-Access-Key: []
     X-User-Access-Token: []
+################################################################################    
 definitions:
   namespace:
     type: object
@@ -241,9 +304,12 @@ definitions:
         type: boolean
       notify_response:
         type: boolean
+################################################################################        
 paths:
   '/setup/connection/{id}':
     get:
+      tags:
+        - Connection
       summary: Retrieve an existing connection
       description: Retrieves the details of an existing connection. You need only supply the unique connection identifier that was returned upon connection creation.
       parameters:
@@ -260,6 +326,8 @@ paths:
         '404':
           description: Item not found
     delete:
+      tags:
+        - Connection      
       summary: Delete a connection
       description: Permanently deletes a connection. It cannot be undone.
       parameters:
@@ -275,6 +343,8 @@ paths:
            description: Item not found
   '/setup/connection':
     get:
+      tags:
+        - Connection    
       summary: Returns a list of connections
       description: Returns a list of connections you've previously created. The connections are returned in sorted order, with the most recent connection appearing first.
       responses:
@@ -285,6 +355,8 @@ paths:
             items:
               $ref: '#/definitions/connection'
     post:
+      tags:
+        - Connection    
       summary: Create or update a connection
       description: Creates or updates the specified connection by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
       responses:
@@ -294,6 +366,8 @@ paths:
             $ref: '#/definitions/connection'
   '/setup/connection_role/{id}':
     get:
+      tags:
+        - Connection Role
       summary: Return a connection role
       description: Returns a connection role
       parameters:
@@ -310,6 +384,8 @@ paths:
         '404':
           description: Item not found
     delete:
+      tags:
+        - Connection Role 
       summary: Delete a connection role.
       description: Deletes the specified connection role.
       parameters:
@@ -325,6 +401,8 @@ paths:
           description: Item not found
   '/setup/connection_role':
       get:
+        tags:
+          - Connection Role
         summary: Returns a list of connection roles
         description: Returns a list of connection roles you've previously created. The connection roles are returned in sorted order, with the most recent connection role appearing first.
         responses:
@@ -335,6 +413,8 @@ paths:
               items:
                 $ref: '#/definitions/connection_role'
       post:
+        tags:
+          - Connection Role      
         summary: Create or update a connection role
         description: Creates or updates the specified connection role by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
         responses:
@@ -344,6 +424,8 @@ paths:
               $ref: '#/definitions/connection_role'
   '/setup/data_type/':
     get:
+      tags:
+        - Data Type
       summary: Returns a list of data types
       description: Returns a list of data types you've previously created. The data types are returned in sorted order, with the most recent DataType appearing first.
       responses:
@@ -354,6 +436,8 @@ paths:
             items:
               $ref: '#/definitions/data_type'
     post:
+      tags:
+        - Data Type
       summary: Create or update a data type
       description: Creates or updates the specified data type by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
       responses:
@@ -363,6 +447,8 @@ paths:
             $ref: '#/definitions/data_type'
   '/setup/data_type/{id}':
     get:
+      tags:
+        - Data Type
       summary: Retrieve a data type
       description: Retrieves the details of an existing data type. You need only supply the unique data  type identifier that was returned upon DataType creation.
       parameters:
@@ -379,6 +465,8 @@ paths:
         '404':
           description: Item not found.
     delete:
+      tags:
+        - Data Type
       summary: Delete a data type
       description: Deletes the specified data type.
       parameters:
@@ -394,6 +482,8 @@ paths:
           description: Item not found
   '/setup/observer/':
       get:
+        tags:
+          - Data Event
         summary: Returns a list of events
         description: Returns a list of events you've previously created. The events are returned in sorted order, with the most recent event appearing first.
         responses:
@@ -404,6 +494,8 @@ paths:
               items:
                 $ref: '#/definitions/observer'
       post:
+        tags:
+          - Data Event   
         summary: Create or update an event
         description: Creates or updates the specified event observer. Any parameters not provided will be left unchanged.
         responses:
@@ -413,6 +505,8 @@ paths:
               $ref: '#/definitions/observer'
   '/setup/observer/{id}':
       get:
+        tags:
+          - Data Event      
         summary:  Retrieve an existing event
         description: Retrieves the details of an existing event. You need only supply the unique event identifier that was returned upon event creation.
         parameters:
@@ -429,6 +523,8 @@ paths:
           '404':
             description: Item not found.
       delete:
+        tags:
+          - Data Event      
         summary:  Delete an event
         description: Deletes the specified event observer.
         parameters:
@@ -444,6 +540,8 @@ paths:
             description: Item not found
   '/setup/scheduler/':
     get:
+      tags:
+        - Scheduler
       summary: Returns a list of schedulers
       description: Returns a list of schedulers you've previously created. The schedulers are returned in sorted order, with the most recent scheduler appearing first.
       responses:
@@ -454,6 +552,8 @@ paths:
             items:
               $ref: '#/definitions/scheduler'
     post:
+      tags:
+        - Scheduler    
       summary: Create or update an scheduler
       description: Creates or updates the specified scheduler. Any parameters not provided will be left unchanged.
       responses:
@@ -463,6 +563,8 @@ paths:
             $ref: '#/definitions/scheduler'
   '/setup/scheduler/{id}':
         get:
+          tags:
+            - Scheduler        
           summary: Retrieve an existing schedule
           description: Retrieves the details of an existing scheduler. You need only supply the unique scheduler identifier that was returned upon scheduler creation.
           parameters:
@@ -479,6 +581,8 @@ paths:
             '404':
               description: Item not found.
         delete:
+          tags:
+            - Scheduler        
           summary: Delete an schedule
           description: Deletes the specified scheduler.
           parameters:
@@ -494,6 +598,8 @@ paths:
               description: Item not found
   '/setup/flow/':
           get:
+            tags:
+              - Flow
             summary: Returns a list of flows
             description: Returns a list of flows you've previously created. The flows are returned in sorted order, with the most recent flow appearing first.
             responses:
@@ -504,6 +610,8 @@ paths:
                   items:
                     $ref: '#/definitions/flow'
           post:
+            tags:
+              - Flow
             summary: Create or update a flow
             description: Creates or updates the specified flow. Any parameters not provided will be left unchanged.
             responses:
@@ -513,6 +621,8 @@ paths:
                   $ref: '#/definitions/flow'
   '/setup/flow/{id}':
           get:
+            tags:
+              - Flow          
             summary: Retrieve an existing flow
             description: Retrieves the details of an existing flow. You need only supply the unique flow identifier that was returned upon flow creation.
             parameters:
@@ -529,6 +639,8 @@ paths:
               '404':
                 description: Item not found.
           delete:
+            tags:
+              - Flow          
             summary: Delete a flow.
             description: Deletes the specified flow.
             parameters:
@@ -544,6 +656,8 @@ paths:
                 description: Item not found
   '/setup/schema/':
      get:
+      tags:
+        - Schema    
        summary: Returns a list of schemas
        description: Returns a list of schemas you've previously created. The schemas are returned in sorted order, with the most recent schema appearing first.
        responses:
@@ -554,6 +668,8 @@ paths:
                items:
                  $ref: '#/definitions/schema'
      post:
+      tags:
+        - Schema     
        summary: Create or update an schema
        description: Creates or updates the specified schema. Any parameters not provided will be left unchanged.
        responses:
@@ -563,6 +679,8 @@ paths:
               $ref: '#/definitions/schema'
   '/setup/schema/{id}':
       get:
+        tags:
+          - Schema      
         summary: Retrieve an existing schema
         description: Retrieves the details of an existing schema. You need only supply the unique schema identifier that was returned upon schema creation.
         parameters:
@@ -579,6 +697,8 @@ paths:
           '404':
               description: Item not found.
       delete:
+        tags:
+          - Schema      
         summary: Delete an schema.
         description: Deletes the specified schema.
         parameters:
@@ -594,6 +714,8 @@ paths:
               description: Item not found
   '/setup/translator/':
        get:
+         tags:
+           - Translator       
          summary: Returns a list of translators
          description: Returns a list of translators you've previously created. The translators are returned in sorted order, with the most recent translator appearing first.
          responses:
@@ -604,6 +726,8 @@ paths:
                  items:
                    $ref: '#/definitions/translator'
        post:
+         tags:
+           - Translator
          summary: Create or update a translator
          description: Creates or updates the specified translator. Any parameters not provided will be left unchanged.
          responses:
@@ -613,6 +737,8 @@ paths:
                 $ref: '#/definitions/translator'
   '/setup/translator/{id}':
         get:
+          tags:
+            - Translator        
           summary: Retrieve an existing translator
           description: Retrieves the details of an existing translator. You need only supply the unique translator identifier that was returned upon translator creation.
           parameters:
@@ -629,6 +755,8 @@ paths:
             '404':
                 description: Item not found.
         delete:
+          tags:
+            - Translator        
           summary: Delete a translator
           description: Deletes the specified translator.
           parameters:
@@ -644,6 +772,8 @@ paths:
               description: Item not found
   '/setup/webhook/':
     get:
+      tags:
+        - Webhook    
       summary: Returns a list of webhooks
       description: Returns a list of webhooks you've previously created. The webhooks are returned in sorted order, with the most recent webhook appearing first.
       responses:
@@ -654,6 +784,8 @@ paths:
             items:
               $ref: '#/definitions/webhook'
     post:
+      tags:
+        - Webhook    
       summary: Create or update a webhook
       description: Creates or updates the specified webhook. Any parameters not provided will be left unchanged.
       responses:
@@ -663,6 +795,8 @@ paths:
              $ref: '#/definitions/webhook'
   '/setup/webhook/{id}':
     get:
+      tags:
+        - Webhook    
       summary: Retrieve an existing webhook
       description: Retrieves the details of an existing webhook. You need only supply the unique webhook identifier that was returned upon webhook creation.
       parameters:
@@ -679,6 +813,8 @@ paths:
         '404':
           description: Item not found.
     delete:
+      tags:
+        - Webhook    
       summary: Delete a webhook
       description: Deletes the specified webhook.
       parameters:
@@ -694,6 +830,8 @@ paths:
           description: Item not found
   '/setup/namespace/':
     get:
+      tags:
+        - Namespace    
       summary: Returns a list of namespaces
       description: Returns a list of namespaces you've previously created. The namespaces are returned in sorted order, with the most recent namespace appearing first.
       responses:
@@ -704,6 +842,8 @@ paths:
             items:
               $ref: '#/definitions/namespace'
     post:
+      tags:
+        - Namespace    
       summary: Create or update a namespace
       description: Creates or updates the specified namespace. Any parameters not provided will be left unchanged.
       responses:
@@ -713,6 +853,8 @@ paths:
             $ref: '#/definitions/namespace'
   '/setup/namespace/{id}':
     get:
+      tags:
+        - Namespace    
       summary: Retrieve an existing namespace
       description: Retrieves the details of an existing namespace. You need only supply the unique webhook namespace that was returned upon namespace creation.
       parameters:
@@ -729,6 +871,8 @@ paths:
          '404':
            description: Item not found.
     delete:
+      tags:
+        - Namespace    
       summary: Delete a namespace
       description: Deletes the specified namespace.
       parameters:
