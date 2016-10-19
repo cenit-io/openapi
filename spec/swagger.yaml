@@ -37,7 +37,7 @@ tags:
       endpoints (APIs, Datasets, EDI). It makes possible the automation of all operational 
       processes in a company, connecting between organization's on-premises infrastructure 
       and cloud provider services.
-   - name: Authentication
+  - name: Authentication
     description: |
       When you sign up for an account, you are given your first API key.
       You can generate additional API keys, and delete API keys (as you may
@@ -45,24 +45,24 @@ tags:
       by providing your endpoint API keys and token in the header parameters into 
       request. You can have multiple API keys and token active at one time for 
       any endpoint.
-    - name: Connection
+  - name: Connection
     description: | 
       Connection are the representation of endpoint. 
-    - name: Connection Role
+  - name: Connection Role
     description: | 
       Define a group of webhooks that can apply to several connections.       
-    - name: Data Event
+  - name: Data Event
     description: | 
       Allow that objects flow through the hub. The creation of new objects 
       and/or changes in existing objects will result in events. These events 
       ultimately result in calls being made to various Flows in your endpoints.
-    - name: Scheduler
+  - name: Scheduler
     description: | 
       Schedulers are events triggered on a certain moment and can be optionally recurrent.
-    - name: Webhook
+  - name: Webhook
     description: |       
       Define an HTTP Method and params.
-    - name: Translator
+  - name: Translator
     description: |       
       A translator defines a logic for data manipulation.
         - Data manipulation can occurs in the following scenarios:
@@ -70,7 +70,7 @@ tags:
         - Updating data already stored in Cenit
         - Converting data already stored in Cenit
         - Exporting data outside Cenit
-    - name: Flow
+  - name: Flow
     description: |       
       A flow defines how data is processed by the execution of one or more actions, 
       if the data is coming in to Cenit or going out of Cenit.   
@@ -79,10 +79,10 @@ tags:
         ₋ Data types. 
         ₋ Translators. 
         ₋ Connections & Webhooks
-    - name: Schema
+  - name: Schema
     description: |       
       Define a data type is as simple as a JSON Schema http://json-schema.org
-    - name: Namespace
+  - name: Namespace
     description: |       
       Define space of names to use across all the tenants    
        
