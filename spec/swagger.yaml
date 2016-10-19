@@ -5,9 +5,9 @@ host: cenit.io
 basePath: /api/v1
 info:
   description: |
-    Cenit IO REST API - Open Platform for Data and Business Integration (iPaaS)
+    Cenit IO is an Open Platform for Data and Business Integration (iPaaS)
   version: v1
-  title: "Cenit IO REST API"
+  title: "Cenit IO - REST API Specification"
   contact:
     name: "Cenit IO Support"
     email: support@cenit.io
