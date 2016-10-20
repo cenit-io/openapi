@@ -66,22 +66,19 @@ tags:
       Define an HTTP Method and params.
   - name: Translator
     description: |       
-      A translator defines a logic for data manipulation.
-        - Data manipulation can occurs in the following scenarios:
+      A translator defines a logic for data manipulation. Data manipulation can occurs in the following scenarios:
         - Importing outside data into Cenit
         - Updating data already stored in Cenit
         - Converting data already stored in Cenit
         - Exporting data outside Cenit
   - name: Flow
     description: |       
-      A flow defines how data is processed by the execution of one or more actions, 
-      if the data is coming in to Cenit or going out of Cenit.   
-      Data processing involve: 
+      A flow defines how data is processed by the execution of one or more actions, if the data is coming in to Cenit or going out of Cenit. Data processing involve:
         ₋ An execution trigger to start the data processing. 
         ₋ Data types. 
         ₋ Translators. 
         ₋ Connections & Webhooks
-  - name: Schema
+  - name: Data Type
     description: |       
       Define a data type is as simple as a JSON Schema http://json-schema.org
   - name: Namespace
