@@ -77,9 +77,13 @@ tags:
       the data is coming in to Cenit or going out of Cenit. Data processing involve:
 
         ₋ An execution trigger to start the data processing
+        
         ₋ Data types
-        ₋ Translators 
+        
+        ₋ Translators
+        
         ₋ Connections & Webhooks
+
   - name: Data Type
     description: |       
       Define a data type is as simple as a JSON Schema http://json-schema.org
